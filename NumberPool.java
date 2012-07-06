@@ -6,7 +6,7 @@ public class NumberPool {
 
     int[] pool = null;
     
-    public int checkOut() {
+    public synchronized int checkOut() {
         return pull();
     }
 
@@ -14,7 +14,7 @@ public class NumberPool {
         push(x);
     }
     
-    private synchronized int pull() {
+    private int pull() {
         int min = Integer.MAX_VALUE;
         int minIndex = 0;
         for(int a=0; a < pool.length; a++) {
